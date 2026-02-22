@@ -4,7 +4,7 @@ description: >-
   各位研究僧在写论文的时候不可避免地使用LaTex来搞定排版和美化的问题。
   下面整理了一份常用的希腊字母和数学公式常用的语法。
   
-author: Retr0
+# author: Retr0
 date: 2023-02-15 16:00:00 +0900
 categories: [Math, Writing]
 tags: [LaTex]

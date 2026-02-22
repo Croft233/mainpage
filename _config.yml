@@ -14,9 +14,9 @@ timezone: Asia/Shanghai
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: Retr0's Blog # the main title
+title: 超大锅巴的日常 # the main title
 
-tagline: 超大锅巴的日常 # it will display as the subtitle
+tagline: Ashes to ashes, dust to dust. # it will display as the subtitle
 
 description: >- # used by seo meta and the atom feed
   Ashes to ashes, dust to dust.
@@ -31,6 +31,9 @@ github:
 # twitter:
 #   username: twitter_username # change to your Twitter username
 
+weibo:
+  username: Retr0spect
+
 social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
@@ -41,6 +44,7 @@ social:
     # - https://twitter.com/username # change to your Twitter homepage
     - https://github.com/Croft233 # change to your GitHub homepage
     # Uncomment below to add more social links
+    - https://weibo.com/u/5701436532 # Sina blog homepage
     # - https://www.facebook.com/username
     # - https://www.linkedin.com/in/username
 

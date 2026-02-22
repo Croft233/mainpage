@@ -3,8 +3,11 @@
 - type: github
   icon: "fab fa-github"
 
-- type: twitter
-  icon: "fa-brands fa-x-twitter"
+# - type: twitter
+#   icon: "fa-brands fa-x-twitter"
+- type: weibo
+  icon: "fab fa-weibo"
+  url: 'https://weibo.com/u/5701436532'
 
 - type: email
   icon: "fas fa-envelope"
@@ -13,6 +16,7 @@
 - type: rss
   icon: "fas fa-rss"
   noblank: true
+
 # Uncomment and complete the url below to enable more contact options
 #
 # - type: mastodon
