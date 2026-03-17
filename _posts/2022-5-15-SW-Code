@@ -1,50 +1,90 @@
 ---
 title: "Slepian-Wolf Code"
 description: >-
-  In information theory and communication, the Slepian–Wolf coding, also known as the Slepian–Wolf bound, is a result in distributed source coding discovered by David Slepian and Jack Wolf in 1973.
-  
-# author: Retr0
+  An introduction to the Slepian-Wolf theorem for correlated sources, with notes on the achievable rate region and a simple MATLAB implementation.
 date: 2022-05-15 23:55:00 +0900
 categories: [Theory, Algorithm]
-tags: [Information]
+tags: [Information Theory, Source Coding]
 pin: true
 math: true
-render_with_liquid: false
 ---
 
-# Slepian-Wolf Code
+Slepian-Wolf coding is a classical result in distributed source coding. It shows that two correlated sources can be encoded **separately** and still be decoded **jointly** at rates approaching the limit of joint compression.
 
-This repository contains a research study on Slepian-Wolf coding for correlated sources. 
-The focus is on understanding the theoretical foundations and principles behind Slepian-Wolf codes, which enable separate encoding of correlated sources with joint decoding to approach the limits of data compression.
+This post gives a concise overview of the Slepian-Wolf theorem, its achievable rate region, and a simple MATLAB implementation for basic simulation.
 
-## Overview
+## Background
 
-- **Slepian-Wolf Coding:**  
-  A coding scheme that allows the efficient compression of correlated sources by separately encoding them and jointly decoding without the need for communication between encoders.
-  This study covers the Slepian-Wolf theorem and its achievable rate region :contentReference[oaicite:0]{index=0}.
+In traditional lossless compression, jointly processing correlated sources is usually more efficient than compressing them independently.  
+The significance of the Slepian-Wolf theorem is that it proves separate encoding does not necessarily lose this optimality, as long as joint decoding is available.
 
-- **Objectives:**  
-  - To explore the theoretical limits of Slepian-Wolf coding.
-  - To understand the design and performance of Slepian-Wolf codes in scenarios with correlated data sources.
+This result is fundamental in information theory and has influenced many later developments in distributed compression and networked communication systems.
 
-- **Applications:**  
-  Potential use cases include sensor networks, multimedia communication, and distributed storage systems.
+## Core Idea
 
-## Repository Contents
-Link:
--> [matlab code](https://github.com/Croft233/Slepian-Wolf-Code/blob/main/sw.m)
-- **Theory Documentation:**  
-  Detailed explanation of the Slepian-Wolf theorem and the achievable rate region.
-- **Simulation Scripts:**  
-  MATLAB scripts (if available) that simulate Slepian-Wolf coding without LDPC integration.
+Consider two correlated discrete memoryless sources, $X$ and $Y$.
 
-## How to Run the Simulations
+Even if the encoder for $X$ does not know the realization of $Y$, and the encoder for $Y$ does not communicate with the encoder for $X$, it is still possible to achieve reliable lossless recovery at the decoder when the coding rates satisfy the Slepian-Wolf bounds.
 
-1. **Requirements:**  
-   MATLAB 
-2. **Instructions:**  
-   - Open the simulation scripts in MATLAB.
-   - Run the main script to generate performance plots and analyze the achievable rate region.
+The achievable rate region is given by:
 
-## References
-[V. Stankovic, A. D. Liveris, Zixiang Xiong and C. N. Georghiades, "Design of Slepian-Wolf codes by channel code partitioning," Data Compression Conference, 2004. Proceedings. DCC 2004, Snowbird, UT, USA, 2004, pp. 302-311, doi: 10.1109/DCC.2004.1281475.](https://github.com/Croft233/Slepian-Wolf-Code/blob/main/design-of-slepianwolf-codes-by-channel-code-partitioning.pdf)
+$$
+R_X \ge H(X|Y)
+$$
+
+$$
+R_Y \ge H(Y|X)
+$$
+
+$$
+R_X + R_Y \ge H(X,Y)
+$$
+
+where:
+
+- $R_X$ and $R_Y$ are the coding rates of sources $X$ and $Y$
+- $H(X|Y)$ and $H(Y|X)$ are conditional entropies
+- $H(X,Y)$ is the joint entropy
+
+These inequalities define the theoretical limit for separate encoding with joint decoding.
+
+## Why It Matters
+
+Slepian-Wolf coding is important because it provides the theoretical foundation for efficient compression of correlated data collected or generated in distributed systems.
+
+Typical examples include:
+
+- sensor networks
+- distributed storage
+- multi-view or multimedia transmission
+- cooperative communication systems
+
+In these settings, separate encoders are often easier to implement, while joint decoding can exploit source correlation to reduce the total compression rate.
+
+## MATLAB Implementation
+
+A simple MATLAB script is available here:
+
+- [MATLAB code](https://github.com/Croft233/Slepian-Wolf-Code/blob/main/sw.m)
+
+The script is intended for studying the basic behavior of Slepian-Wolf coding and visualizing the achievable rate region in a simplified setting.
+
+## How to Run
+
+Make sure MATLAB is installed, then:
+
+1. Open the script file in MATLAB.
+2. Run the main script.
+3. Observe the generated results and compare them with the theoretical rate region.
+
+## Notes
+
+This post focuses on the theoretical idea and a lightweight simulation example.  
+It does not include practical channel-code-based constructions such as LDPC-based Slepian-Wolf implementations, which are often used in more advanced studies.
+
+## Reference
+
+- V. Stankovic, A. D. Liveris, Zixiang Xiong, and C. N. Georghiades,  
+  *Design of Slepian-Wolf Codes by Channel Code Partitioning*,  
+  Data Compression Conference (DCC), 2004.  
+  [PDF](https://github.com/Croft233/Slepian-Wolf-Code/blob/main/design-of-slepianwolf-codes-by-channel-code-partitioning.pdf)
